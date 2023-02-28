@@ -1,7 +1,7 @@
-import "./App.css";
+import "../App.css";
 import io from "socket.io-client";
 import { useState } from "react";
-import Chat from "./Chat";
+import Chat from "../Chat.js"
 import { useNavigate, Link } from 'react-router-dom'
 
 const socket = io.connect("http://localhost:3000");
@@ -37,12 +37,12 @@ function ChatView() {
                             setRoom(event.target.value);
                         }}
                     />
-                    <button onClick={joinRoom}>Join A Room</button>
+                    <button onClick={joinRoom}>Join a Room</button>
                 </div>
             ) : (
                 <Chat socket={socket} username={username} room={room} />
             )}
-            <Link to="/new">Add a new celebrity</Link>
+            <Link to="/">home</Link>
 
         </div>
     );

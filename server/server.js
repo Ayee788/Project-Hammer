@@ -12,10 +12,7 @@ const Mustache = require('./routes/mustache.routes');
 Mustache(app);
 
 const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
+  cors: true,
 });
 
 io.on("connection", (socket) => {
