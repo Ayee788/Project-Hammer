@@ -21,7 +21,7 @@
     
     return (
         <div className="App">
-        <h1>Socket Test</h1>
+            <h1>Socket Test</h1>
         </div>
     );
     }
