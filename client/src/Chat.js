@@ -5,6 +5,8 @@
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
 
+        // test comment for git
+
     const sendMessage = async () => {
         if (currentMessage !== "") {
         const messageData = {
