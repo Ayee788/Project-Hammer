@@ -1,8 +1,8 @@
-const Mustache = require('../models/mustache.model');
+const Mustaches = require('../models/mustache.model');
 
 
 module.exports.findAllMustaches = (req, res) => {
-    Mustache.find()
+    Mustaches.find()
         .then((mustaches) => {
             res.json(mustaches)
         })
@@ -12,7 +12,7 @@ module.exports.findAllMustaches = (req, res) => {
 }
 
 module.exports.findOneSingleMustache = (req, res) =>{
-    Mustache.findOne({_id: req.params.id})
+    Mustaches.findOne({_id: req.params.id})
         .then(oneMustache =>{
             res.json(oneMustache)
         })
@@ -22,7 +22,7 @@ module.exports.findOneSingleMustache = (req, res) =>{
 }
 
 module.exports.createMustache = (req, res) =>{
-    Mustache.create(req.body)
+    Mustaches.create(req.body)
         .then(newMustache =>{
             res.json(newMustache)
         })
@@ -32,7 +32,7 @@ module.exports.createMustache = (req, res) =>{
 }
 
 module.exports.updateExistingMustache = (req, res) =>{
-    Mustache.findOneAndUpdate(
+    Mustaches.findOneAndUpdate(
         {_id: req.params.id},
         req.body,
         {new: true, runValidators: true})
@@ -44,7 +44,7 @@ module.exports.updateExistingMustache = (req, res) =>{
 }
 
 module.exports.deleteAnExistingMustache = (req, res) =>{
-    Mustache.deleteOne({_id: req.params.id})
+    Mustaches.deleteOne({_id: req.params.id})
         .then(result =>{
             res.json(result)
         })

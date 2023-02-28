@@ -4,8 +4,7 @@ const MustacheSchema = new mongoose.Schema(
     {
         image: {
             type: String,
-            required: [true, "{PATH} is a required field."],
-            minlength: [3, "{PATH} must be {MINLENGTH} characters long."]
+            required: [true, "{PATH} url is required."],
         },
     },
     {timestamps: true})
