@@ -4,8 +4,12 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 app.use(cors());
-
+app.use(express.json(), express.urlencoded({extended: true}));
 const server = http.createServer(app);
+
+require('./server/config/mongoose.config');
+const MustacheProject = require('./server/routes/mustache.routes');
+MustacheProject(app);
 
 const io = new Server(server, {
   cors: {
