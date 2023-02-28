@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json(), express.urlencoded({extended: true}));
 const server = http.createServer(app);
 
-require('./server/config/mongoose.config');
-const Mustache = require('./server/routes/mustache.routes');
+require('./config/mongoose.config');
+const Mustache = require('./routes/mustache.routes');
 Mustache(app);
 
 const io = new Server(server, {
