@@ -2,6 +2,7 @@ import "./App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
+import { useNavigate, Link } from 'react-router-dom'
 
 const socket = io.connect("http://localhost:3000");
 
@@ -41,6 +42,8 @@ function App() {
       ) : (
         <Chat socket={socket} username={username} room={room} />
       )}
+      <Link to="/new">Add a new celebrity</Link>
+
     </div>
   );
 }
