@@ -8,8 +8,8 @@ app.use(express.json(), express.urlencoded({extended: true}));
 const server = http.createServer(app);
 
 require('./server/config/mongoose.config');
-const MustacheProject = require('./server/routes/mustache.routes');
-MustacheProject(app);
+const Mustache = require('./server/routes/mustache.routes');
+Mustache(app);
 
 const io = new Server(server, {
   cors: {
