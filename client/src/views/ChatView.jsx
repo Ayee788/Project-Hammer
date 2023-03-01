@@ -1,4 +1,3 @@
-import "../App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "../Chat.js";
@@ -23,21 +22,21 @@ const joinRoom = () => {
     };
 
     return (
-    <div className="App">
+        <MDBContainer fluid className="App py-5 gradient-custom">
         {!showChat ? (
-        <div className="joinChatContainer">
+        <MDBCol md="6" lg="7" xl="8">
             <h3>Join a Chat</h3>
             <input type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
             <input type="text" placeholder="Room number" onChange={(event) => {
                 setRoom(event.target.value);
             }}/>
             <button onClick={joinRoom}>Join a Room</button>
-        </div>
+        </MDBCol>
         ) : (
         <Chat socket={socket} username={username} room={room} />
         )}
         <Link to="/">home</Link>
-    </div>
+        </MDBContainer>
     );
 }
 
