@@ -6,7 +6,6 @@ import { useNavigate, Link } from "react-router-dom";
 import React from "react";
 import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypography,MDBTextArea,MDBCardHeader,} from "mdb-react-ui-kit";
 
-//  test comment
 
 const socket = io.connect("http://localhost:3000");
 
