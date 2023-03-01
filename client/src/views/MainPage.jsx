@@ -7,7 +7,7 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
 const MainPage = () => {
     return (
         <MDBContainer fluid className="App py-5 gradient-custom">
-            <h1 class="m-4 p-1"> Welcome to the Mustache Rodeo! Ever wonder what some of your favorite celebrities would look like with some facial hair? Now is your chance to add it and talk to your friends about it!</h1>
+            <h1 className="m-4 p-1"> Join Our Chatroom!</h1>
             <Link to="/chat">Join a Chat</Link>
         </MDBContainer>
     )
