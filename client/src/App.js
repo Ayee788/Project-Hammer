@@ -1,12 +1,13 @@
-import './App.css';
 import {Routes, Route, Link} from "react-router-dom";
+import "./Chat.css";
+import "./App.css";
 import ChatView from './views/ChatView'
 import MainPage from './views/MainPage';
 
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route path={'/'} element={<MainPage/>}/>
         <Route path={'/chat'} element={<ChatView/>}></Route>
