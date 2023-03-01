@@ -24,7 +24,7 @@ const joinRoom = () => {
     return (
         <MDBContainer fluid className="App py-5 gradient-custom">
         {!showChat ? (
-        <MDBCol md="6" lg="7" xl="8">
+        <MDBCol>
             <h3>Join a Chat</h3>
             <input type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
             <input type="text" placeholder="Room number" onChange={(event) => {
