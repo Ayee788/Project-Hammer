@@ -6,9 +6,9 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
 
 const MainPage = () => {
     return (
-        <MDBContainer fluid className="App py-5 gradient-custom">
+        <MDBContainer fluid className="App py-5 gradient-custom text-white">
             <h1 className="m-4 p-1"> Join Our Chatroom!</h1>
-            <Link to="/chat">Join a Chat</Link>
+            <Link className="text-white" to="/chat">Join a Chat</Link>
         </MDBContainer>
     )
 }

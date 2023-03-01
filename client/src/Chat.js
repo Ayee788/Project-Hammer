@@ -31,7 +31,7 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
   }, [socket]);
 
   return (
-    <MDBCol className="">
+    <MDBCol className="App">
       <MDBTypography listUnStyled className="text-white">
         <div className="chat-header">
           <h1>Live Chat</h1>
@@ -42,15 +42,14 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
               return (
                 <div
                   className="message"
-                  id={username === messageContent.author ? "you" : "other"}
-                >
+                  id={username === messageContent.author ? "you" : "other"}>
                   <div>
                     <MDBCardHeader className="d-flex justify-content-between p-3" style={{ borderBottom: "1px solid rgba(255,255,255,.3)" }}>
-                      <p className="fw-bold mb-0" id="author">{messageContent.author}</p>
-                      <p className="text-light small mb-0" id="time">{messageContent.time}</p>
+                      <p className="text-light small mb-0 m-1" id="author">User: {messageContent.author}</p>
+                      <p className="text-light small mb-0 m-1" id="time">{messageContent.time}</p>
                     </MDBCardHeader>
                     <MDBCardBody>
-                      <p className="mb-0">{messageContent.message}</p>
+                      <p className="text-light mb-0 m-1">{messageContent.message}</p>
                     </MDBCardBody>
                   </div>
                 </div>
@@ -59,10 +58,10 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
           </ScrollToBottom>
         </MDBCard>
         <div className="chat-footer">
-          <input
+          <MDBTextArea
+            label="Message"
             type="text"
             value={currentMessage}
-            placeholder="Hey..."
             onChange={(event) => {
               setCurrentMessage(event.target.value);
             }}
@@ -70,7 +69,10 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
               event.key === "Enter" && sendMessage();
             }}
           />
-          <button onClick={sendMessage}>&#9658;</button>
+          <MDBBtn color="light" size="lg" rounded className="float-end mb-3" onClick={sendMessage}>
+            Send
+          </MDBBtn>
+          {/* <button onClick={sendMessage}>&#9658;</button> */}
         </div>
       </MDBTypography>
     </MDBCol>

@@ -22,20 +22,26 @@ const joinRoom = () => {
     };
 
     return (
-        <MDBContainer fluid className="App py-5 gradient-custom">
+        <MDBContainer fluid className="py-5 gradient-custom">
         {!showChat ? (
-        <MDBCol>
+        <MDBCol className="App text-white">
             <h3>Join a Chat</h3>
-            <input type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
-            <input type="text" placeholder="Room number" onChange={(event) => {
+            <div>
+                <lable>User Name:</lable>
+                <input className="m-2" type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
+            </div>
+            <div>
+                <lable>Room Number:</lable>
+                <input className="m-2" type="text" placeholder="Room number" onChange={(event) => {
                 setRoom(event.target.value);
-            }}/>
-            <button onClick={joinRoom}>Join a Room</button>
+                }}/>
+            </div>
+            <MDBBtn color="light" size="lg" rounded className="float-end" onClick={joinRoom}>Join a Room</MDBBtn>
         </MDBCol>
         ) : (
         <Chat socket={socket} username={username} room={room} />
         )}
-        <Link to="/">home</Link>
+        <Link className="text-white" to="/">home</Link>
         </MDBContainer>
     );
 }
