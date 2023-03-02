@@ -26,21 +26,22 @@ const joinRoom = () => {
             <MDBCol className="App text-white">
                 <h3>Join a Chat</h3>
                 <div>
-                    <lable>User Name:</lable>
+                    <lable>User:</lable>
                     <input className="m-2" type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
                 </div>
                 <div>
-                    <lable>Room Number:</lable>
+                    <lable>Room:</lable>
                     <input className="m-2" type="text" placeholder="Room number" onChange={(event) => {
                     setRoom(event.target.value);
                     }}/>
                 </div>
-                <MDBBtn color="light" size="lg" rounded className="shadow float-end" onClick={joinRoom}>Join a Room</MDBBtn>
+                <div className="d-flex justify-content-center">
+                    <MDBBtn color="light" size="lg" rounded className="shadow float-end" onClick={joinRoom}>Join a Room</MDBBtn>
+                </div>
             </MDBCol>
             ) : (
             <Chat socket={socket} username={username} room={room} />
             )}
-            <Link className="text-white" to="/">home</Link>
         </MDBContainer>
     );
 }
