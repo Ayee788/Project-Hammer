@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { Link } from 'react-router-dom'
+import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypography,MDBTextArea,MDBCardHeader,} from "mdb-react-ui-kit";
 
     function Chat({ socket, username, room }) {
     const [currentMessage, setCurrentMessage] = useState("");
@@ -30,47 +32,57 @@ import ScrollToBottom from "react-scroll-to-bottom";
   }, [socket]);
 
   return (
-    <div className="chat-window">
-      <div className="chat-header">
-        <p>Live Chat</p>
-      </div>
-      <div className="chat-body">
-        <ScrollToBottom className="message-container">
-          {messageList.map((messageContent) => {
-            return (
-              <div
-                className="message"
-                id={username === messageContent.author ? "you" : "other"}
-              >
-                <div>
-                  <div className="message-content">
-                    <p>{messageContent.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
+    <MDBCol className="App">
+      <MDBTypography listUnStyled className="text-white">
+        <div className="d-flex justify-content-center">
+          <h1>Live Chat!</h1>
+        </div>
+        <MDBCard className="w-100 mask-custom">
+          <div className="message-container">
+            {messageList.map((messageContent) => {
+              return (
+                <div
+                  className="message"
+                  id={username === messageContent.author ? "you" : "other"}>
+                  <div>
+                    <MDBCardHeader className="d-flex justify-content-between p-3" style={{ borderBottom: "1px solid rgba(255,255,255,.3)" }}>
+                      <p className="text-light small mb-0 m-1" id="author">User: {messageContent.author}</p>
+                      <p className="text-light small mb-0 m-1" id="time">{messageContent.time}</p>
+                    </MDBCardHeader>
+                    <MDBCardBody>
+                      <p className="text-light mb-0 m-1">{messageContent.message}</p>
+                    </MDBCardBody>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </ScrollToBottom>
-      </div>
-      <div className="chat-footer">
-        <input
-          type="text"
-          value={currentMessage}
-          placeholder="Hey..."
-          onChange={(event) => {
-            setCurrentMessage(event.target.value);
-          }}
-          onKeyPress={(event) => {
-            event.key === "Enter" && sendMessage();
-          }}
-        />
-        <button onClick={sendMessage}>&#9658;</button>
-      </div>
-    </div>
+              );
+            })}
+          </div>
+        </MDBCard>
+        <div className="chat-footer">
+          <textarea
+            cols="20"
+            rows="3"
+            className="m-3"
+            placeholder="Message"
+            label="Message"
+            type="text"
+            value={currentMessage}
+            onChange={(event) => {
+              setCurrentMessage(event.target.value);
+            }}
+            onKeyPress={(event) => {
+              event.key === "Enter" && sendMessage();
+            }}
+          />
+        </div>
+        <div className="d-flex justify-content-center">
+          <MDBBtn color="light" size="lg" rounded className="shadow float-end mt-2 mb-3" onClick={sendMessage}>
+            Send
+          </MDBBtn>
+        </div>
+      </MDBTypography>
+      <Link className="text-white" to="/">home</Link>
+    </MDBCol>
   );
 }
 

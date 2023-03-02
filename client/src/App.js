@@ -1,4 +1,4 @@
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import "./Chat.css";
 import "./App.css";
 import ChatView from './views/ChatView'
