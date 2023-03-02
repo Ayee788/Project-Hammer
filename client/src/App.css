@@ -1,10 +1,19 @@
 .App {
+  width: 95vw;
+  height: 97.3vh;
+  font-family: "Open Sans", sans-serif;
+  display: grid;
+  place-items: center;
+}
+
+.Appa {
   width: 100vw;
   height: 100vh;
   font-family: "Open Sans", sans-serif;
   display: grid;
   place-items: center;
 }
+
 body {
   margin: 0%;
   padding: 0%;
