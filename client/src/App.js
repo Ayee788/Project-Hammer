@@ -3,6 +3,7 @@ import "./Chat.css";
 import "./App.css";
 import ChatView from './views/ChatView'
 import MainPage from './views/MainPage';
+import Main from './components/Main'
 
 
 function App() {
