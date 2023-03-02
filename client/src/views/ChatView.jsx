@@ -3,7 +3,8 @@ import { useState } from "react";
 import Chat from "../Chat.js";
 import { useNavigate, Link } from "react-router-dom";
 import React from "react";
-import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypography,MDBTextArea,MDBCardHeader,} from "mdb-react-ui-kit";
+import {MDBContainer,MDBRow,div,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypography,MDBTextArea,MDBCardHeader,} from "mdb-react-ui-kit";
+import videoBg from '../assets/videoBg.mp4'
 
 
 const socket = io.connect("http://localhost:3000");
@@ -21,28 +22,32 @@ const joinRoom = () => {
     };
 
     return (
-        <MDBContainer fluid className="gradient-custom">
-        {!showChat ? (
-            <MDBCol className="App text-white">
-                <h3>Join a Chat</h3>
+        <div className="main">
+            <div className="overlay"></div>
+            <video src={videoBg} autoPlay loop muted />
+            <div className="content">
+            {!showChat ? (
                 <div>
-                    <lable>User:</lable>
-                    <input className="m-2" type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
+                    <h3>Join a Chat</h3>
+                    <div>
+                        <lable>User:</lable>
+                        <input className="m-2" type="text" placeholder="Your name here" onChange={(event) => {setUsername(event.target.value);}}/>
+                    </div>
+                    <div>
+                        <lable>Room:</lable>
+                        <input className="m-2" type="text" placeholder="Room number" onChange={(event) => {
+                        setRoom(event.target.value);
+                        }}/>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <MDBBtn color="light" size="lg" rounded className="shadow float-end" onClick={joinRoom}>Join a Room</MDBBtn>
+                    </div>
                 </div>
-                <div>
-                    <lable>Room:</lable>
-                    <input className="m-2" type="text" placeholder="Room number" onChange={(event) => {
-                    setRoom(event.target.value);
-                    }}/>
-                </div>
-                <div className="d-flex justify-content-center">
-                    <MDBBtn color="light" size="lg" rounded className="shadow float-end" onClick={joinRoom}>Join a Room</MDBBtn>
-                </div>
-            </MDBCol>
-            ) : (
-            <Chat socket={socket} username={username} room={room} />
-            )}
-        </MDBContainer>
+                ) : (
+                <Chat socket={socket} username={username} room={room} />
+                )}
+            </div>
+        </div>
     );
 }
 
