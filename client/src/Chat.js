@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { Link } from 'react-router-dom'
 import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypography,MDBTextArea,MDBCardHeader,} from "mdb-react-ui-kit";
 
     function Chat({ socket, username, room }) {
@@ -33,11 +34,11 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
   return (
     <MDBCol className="App">
       <MDBTypography listUnStyled className="text-white">
-        <div className="chat-header">
-          <h1>Live Chat</h1>
+        <div className="d-flex justify-content-center">
+          <h1>Live Chat!</h1>
         </div>
         <MDBCard className="w-100 mask-custom">
-          <ScrollToBottom className="message-container">
+          <div className="message-container">
             {messageList.map((messageContent) => {
               return (
                 <div
@@ -55,10 +56,14 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
                 </div>
               );
             })}
-          </ScrollToBottom>
+          </div>
         </MDBCard>
         <div className="chat-footer">
-          <MDBTextArea
+          <textarea
+            cols="20"
+            rows="3"
+            className="m-3"
+            placeholder="Message"
             label="Message"
             type="text"
             value={currentMessage}
@@ -69,12 +74,14 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
               event.key === "Enter" && sendMessage();
             }}
           />
-          <MDBBtn color="light" size="lg" rounded className="float-end mb-3" onClick={sendMessage}>
+        </div>
+        <div className="d-flex justify-content-center">
+          <MDBBtn color="light" size="lg" rounded className="shadow float-end mt-2 mb-3" onClick={sendMessage}>
             Send
           </MDBBtn>
-          {/* <button onClick={sendMessage}>&#9658;</button> */}
         </div>
       </MDBTypography>
+      <Link className="text-white" to="/">home</Link>
     </MDBCol>
   );
 }
