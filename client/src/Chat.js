@@ -38,25 +38,29 @@ import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBIcon,MDBBtn,MDBTypogra
           <h1>Live Chat!</h1>
         </div>
         <MDBCard className="w-100 mask-custom">
-          <div className="message-container">
-            {messageList.map((messageContent) => {
-              return (
-                <div
-                  className="message"
-                  id={username === messageContent.author ? "you" : "other"}>
-                  <div>
-                    <MDBCardHeader className="d-flex justify-content-between p-3" style={{ borderBottom: "1px solid rgba(255,255,255,.3)" }}>
-                      <p className="text-light small mb-0 m-1" id="author">User: {messageContent.author}</p>
-                      <p className="text-light small mb-0 m-1" id="time">{messageContent.time}</p>
-                    </MDBCardHeader>
-                    <MDBCardBody>
-                      <p className="text-light mb-0 m-1">{messageContent.message}</p>
-                    </MDBCardBody>
+
+            <div className="message-container" style={{overflow:"auto", height:"400px", overflowAnchor:"none"}}>
+              {messageList.map((messageContent,i) => {
+                return (
+                  <div key={i}
+                    className="message"
+                    id={username === messageContent.author ? "you" : "other"}>
+                    <div>
+                      <MDBCardHeader className="d-flex justify-content-between p-3" style={{ borderBottom: "none" }}>
+                        <p className="text-light small mb-0 m-1" id="author">User: {messageContent.author}</p>
+                        <p className="text-light small mb-0 m-1" id="time">{messageContent.time}</p>
+                      </MDBCardHeader>
+                      <MDBCardBody style={{ borderBottom: "1px solid rgba(255,255,255,.3)" }}>
+                        <p className="text-light mb-1 m-1">{messageContent.message}</p>
+                      </MDBCardBody>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            <div style={{height:"1px",overflowAnchor:"auto"}}>
+
+            </div>
+            </div>
         </MDBCard>
         <div className="chat-footer">
           <textarea
